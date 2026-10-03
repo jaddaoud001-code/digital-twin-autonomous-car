@@ -1,0 +1,77 @@
+# =========================
+# macOS
+# =========================
+.DS_Store
+
+# =========================
+# IDE / editors
+# =========================
+.vscode/
+.idea/
+
+*.csproj
+*.sln
+*.slnx
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# =========================
+# Unity generated files
+# =========================
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Oo]bj/
+**/[Bb]uild/
+**/[Bb]uilds/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/
+**/[Mm]emoryCaptures/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# =========================
+# Node / Svelte
+# =========================
+node_modules/
+.svelte-kit/
+dist/
+build/
+
+# =========================
+# Generated datasets
+# =========================
+data/raw/*
+data/processed/*
+data/generated/*
+
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/generated/.gitkeep
+
+# =========================
+# ML model artifacts
+# =========================
+models/driving/*
+models/maintenance/*
+
+!models/driving/.gitkeep
+!models/maintenance/.gitkeep
+
+# =========================
+# Logs
+# =========================
+*.log
