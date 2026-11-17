@@ -65,10 +65,17 @@ public class TelemetryHud : MonoBehaviour
             $"Brake     : {s.brake,5:F2}\n" +
             $"Position  : ({s.position.x:F1}, {s.position.y:F1}, {s.position.z:F1})\n" +
             $"Sim time  : {Time.time:F1} s\n" +
+            $"──────────────\n" +
+            $"Motor load: {s.motorLoad * 100f,5:F0} %\n" +
+            $"Battery   : {s.batteryPercent,6:F2} %\n" +
+            $"Motor temp: {s.motorTemperatureC,6:F1} °C\n" +
+            $"Motor wear: {s.motorWear * 100f,6:F3} %\n" +
+            $"Distance  : {s.distanceMeters,6:F0} m\n" +
+            $"Runtime   : {s.runtimeSeconds,6:F0} s\n" +
             recLine + "\n" +
             "<size=12>H : hide HUD</size>";
 
-        GUI.Box(new Rect(10, 10, 330, 230), GUIContent.none);
-        GUI.Label(new Rect(20, 15, 320, 220), text, style);
+        GUI.Box(new Rect(10, 10, 360, 380), GUIContent.none);
+        GUI.Label(new Rect(20, 15, 350, 370), text, style);
     }
 }

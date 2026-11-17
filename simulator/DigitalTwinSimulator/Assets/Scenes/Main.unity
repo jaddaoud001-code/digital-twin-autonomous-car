@@ -1024,6 +1024,7 @@ GameObject:
   - component: {fileID: 1340200677}
   - component: {fileID: 1340200678}
   - component: {fileID: 1340200679}
+  - component: {fileID: 1340200680}
   m_Layer: 0
   m_Name: Vehicle
   m_TagString: Untagged
@@ -1142,6 +1143,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TelemetryHud
   visible: 1
+--- !u!114 &1340200680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340200671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a49a18673bc241088553211622461f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleHealthModel
+  referenceSpeed: 15
+  batteryCapacityKwh: 5
+  maxMotorPowerKw: 20
+  idlePowerKw: 0.3
+  initialBatteryPercent: 100
+  ambientTemperatureC: 20
+  maxTemperatureRiseC: 60
+  thermalTimeConstantS: 30
+  initialMotorWear: 0
+  wearRatePerSecondAtFullLoad: 0.001
 --- !u!1 &2037582317
 GameObject:
   m_ObjectHideFlags: 0

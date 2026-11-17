@@ -3,6 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(VehicleController))]
+[RequireComponent(typeof(VehicleHealthModel))]
 public class VehicleTelemetryCollector :
     MonoBehaviour,
     IVehicleTelemetrySource
@@ -11,7 +12,7 @@ public class VehicleTelemetryCollector :
 
     private Rigidbody rb;
     private VehicleController vehicleController;
-
+    private VehicleHealthModel health;
     private Vector3 previousVelocity;
     private float currentAcceleration;
 
@@ -19,7 +20,7 @@ public class VehicleTelemetryCollector :
     {
         rb = GetComponent<Rigidbody>();
         vehicleController = GetComponent<VehicleController>();
-
+        health = GetComponent<VehicleHealthModel>();
         previousVelocity = rb.linearVelocity;
     }
 
@@ -37,7 +38,7 @@ public class VehicleTelemetryCollector :
     public VehicleTelemetrySample GetTelemetrySample()
     {
         VehicleControlCommand command =
-            vehicleController.LastCommand;
+            vehicleController.EffectiveCommand;
 
         return new VehicleTelemetrySample
         {
@@ -58,7 +59,13 @@ public class VehicleTelemetryCollector :
 
             steering = command.Steering,
             throttle = command.Throttle,
-            brake = command.Brake
+            brake = command.Brake,
+            motorLoad = health.MotorLoad,
+            batteryPercent = health.BatteryPercent,
+            motorTemperatureC = health.MotorTemperatureC,
+            motorWear = health.MotorWear,
+            distanceMeters = health.DistanceMeters,
+            runtimeSeconds = health.RuntimeSeconds
         };
     }
 }

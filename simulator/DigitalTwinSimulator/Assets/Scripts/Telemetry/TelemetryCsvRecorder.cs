@@ -54,7 +54,8 @@ public class TelemetryCsvRecorder : MonoBehaviour
         writer.WriteLine(
             "vehicle_id,timestamp_ms,sim_time_s," +
             "pos_x,pos_y,pos_z,vel_x,vel_y,vel_z," +
-            "speed_mps,accel_mps2,steering,throttle,brake");
+            "speed_mps,accel_mps2,steering,throttle,brake," +
+            "motor_load,battery_pct,motor_temp_c,motor_wear,distance_m,runtime_s");
 
         samplesWritten = 0;
         nextSampleTime = Time.time;
@@ -90,7 +91,13 @@ public class TelemetryCsvRecorder : MonoBehaviour
             s.accelerationMetersPerSecondSquared.ToString("F3", inv),
             s.steering.ToString("F2", inv),
             s.throttle.ToString("F2", inv),
-            s.brake.ToString("F2", inv)));
+            s.brake.ToString("F2", inv),
+            s.motorLoad.ToString("F3", inv),
+            s.batteryPercent.ToString("F3", inv),
+            s.motorTemperatureC.ToString("F2", inv),
+            s.motorWear.ToString("F5", inv),
+            s.distanceMeters.ToString("F2", inv),
+            s.runtimeSeconds.ToString("F2", inv)));
 
         samplesWritten++;
 

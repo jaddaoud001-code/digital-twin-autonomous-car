@@ -15,4 +15,12 @@ public struct VehicleTelemetrySample
     public float steering;
     public float throttle;
     public float brake;
+
+    // Vehicle health
+    public float motorLoad;
+    public float batteryPercent;
+    public float motorTemperatureC;
+    public float motorWear;
+    public float distanceMeters;
+    public float runtimeSeconds;
 }
