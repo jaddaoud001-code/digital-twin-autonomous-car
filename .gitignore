@@ -42,6 +42,9 @@ __pycache__/
 .venv/
 venv/
 .env
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
 
 # =========================
 # Node / Svelte

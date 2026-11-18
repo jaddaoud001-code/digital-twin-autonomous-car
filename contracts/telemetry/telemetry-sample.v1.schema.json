@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digital-twin-autonomous-car/contracts/telemetry/telemetry-sample.v1.schema.json",
+  "title": "TelemetrySample v1",
+  "description": "One vehicle telemetry sample, as written by the Unity simulator (TelemetryCsvRecorder) at 10 Hz, one CSV row per sample. The order of the 'required' array is the authoritative CSV column order. Numeric bounds are outlier-detection limits, intentionally wider than the simulation model.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "vehicle_id",
+    "timestamp_ms",
+    "sim_time_s",
+    "pos_x",
+    "pos_y",
+    "pos_z",
+    "vel_x",
+    "vel_y",
+    "vel_z",
+    "speed_mps",
+    "accel_mps2",
+    "steering",
+    "throttle",
+    "brake",
+    "motor_load",
+    "battery_pct",
+    "motor_temp_c",
+    "motor_wear",
+    "distance_m",
+    "runtime_s"
+  ],
+  "properties": {
+    "vehicle_id": {
+      "type": "string",
+      "description": "Vehicle identifier (e.g. 'vehicle-001'). No unit."
+    },
+    "timestamp_ms": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Wall-clock time of the sample, Unix epoch in milliseconds (UTC). May jump at startup; not the reference clock."
+    },
+    "sim_time_s": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Simulation time (Unity Time.time) in seconds. Reference clock, +0.100 s per sample at 10 Hz."
+    },
+    "pos_x": {
+      "type": "number",
+      "description": "World position X in meters (m)."
+    },
+    "pos_y": {
+      "type": "number",
+      "description": "World position Y (vertical) in meters (m)."
+    },
+    "pos_z": {
+      "type": "number",
+      "description": "World position Z in meters (m)."
+    },
+    "vel_x": {
+      "type": "number",
+      "description": "World velocity X in meters per second (m/s)."
+    },
+    "vel_y": {
+      "type": "number",
+      "description": "World velocity Y (vertical) in meters per second (m/s)."
+    },
+    "vel_z": {
+      "type": "number",
+      "description": "World velocity Z in meters per second (m/s)."
+    },
+    "speed_mps": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 20,
+      "description": "Speed, norm of the 3D velocity vector, in meters per second (m/s). Model limit: 15 forward, 5 reverse."
+    },
+    "accel_mps2": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Acceleration magnitude, norm of the velocity change per physics step, in meters per second squared (m/s^2). Includes the centripetal component; collisions produce large spikes."
+    },
+    "steering": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1,
+      "description": "Effective steering command, dimensionless in [-1, 1] (-1 = full left, +1 = full right)."
+    },
+    "throttle": {
+      "type": "number",
+      "minimum": -1,
+      "maximum": 1,
+      "description": "Effective throttle command, dimensionless in [-1, 1] (-1 = full reverse, +1 = full forward)."
+    },
+    "brake": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Effective brake command, dimensionless in [0, 1]."
+    },
+    "motor_load": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Simulated motor load, dimensionless fraction in [0, 1]."
+    },
+    "battery_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Simulated battery state of charge in percent (%)."
+    },
+    "motor_temp_c": {
+      "type": "number",
+      "minimum": -40,
+      "maximum": 200,
+      "description": "Simulated motor temperature in degrees Celsius (degC)."
+    },
+    "motor_wear": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Simulated cumulative motor wear, dimensionless fraction in [0, 1] (1 = fully worn)."
+    },
+    "distance_m": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Cumulative horizontal distance travelled in meters (m)."
+    },
+    "runtime_s": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Cumulative vehicle runtime in seconds (s)."
+    }
+  }
+}
